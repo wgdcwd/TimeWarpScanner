@@ -23,7 +23,7 @@ class RightToLeftScanner(BaseScanner):
 
             out.write(frame_with_line)
             cv2.imshow('Time Warp Scan', frame_with_line)
-            if cv2.waitKey(int(1000 / fps)) & 0xFF == ord('q'):
+            if cv2.waitKey(int(1000 / fps)) & 0xFF == 27:  # Esc key
                 break
 
             if line_pos <= 0:
