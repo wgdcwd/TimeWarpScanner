@@ -1,11 +1,14 @@
 import cv2
 import numpy as np
 
+
 class BaseScanner:
     def __init__(self, input_path, line_speed=1):
         self.input_path = input_path
         self.line_speed = line_speed
         self.output_data = None
+        self.paused = False
+        self.line_pos = 0
 
     def convert(self, output_path):
         cap = cv2.VideoCapture(self.input_path)
@@ -39,6 +42,9 @@ class BaseScanner:
 
     def process_frames(self, frames, width, height, fps, out):
         raise NotImplementedError("Subclasses should implement this method")
+
+    def update_line_position(self, key, width, height):
+        pass
 
     def get_output_data(self):
         return self.output_data
