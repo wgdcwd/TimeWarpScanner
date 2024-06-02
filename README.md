@@ -1,4 +1,4 @@
-<img width="962" alt="toptobottom_move" src="https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/62b77f6f-a11e-4f3c-9d86-01221d1c8ffd"># Time Warp Scanner⌚
+# Time Warp Scanner⌚
 
 ## 소개
 
@@ -60,11 +60,14 @@ Time Warp Scanner는 사용자가 영상에 독특한 효과를 적용할 수 �
 
 ## 예시 영상
 - Left to Right
-https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/fbeb4c6d-17e5-4126-8a01-f00e45ea4017
+
+https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/66fcc741-96a1-4368-b81f-27b279d17dc1
+
+
 
 - Left to Right 선 위치 조절
-https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/fa54ac91-e71b-43c4-9e7b-350c80116bb4
-
+  
+https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/0113c739-17b5-4890-9078-b650885001fe
 
 
 
