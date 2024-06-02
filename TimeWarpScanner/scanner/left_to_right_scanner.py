@@ -2,6 +2,7 @@ from .base_scanner import BaseScanner
 import cv2
 import numpy as np
 
+
 class LeftToRightScanner(BaseScanner):
     def process_frames(self, frames, width, height, fps, out):
         line_pos = 0
