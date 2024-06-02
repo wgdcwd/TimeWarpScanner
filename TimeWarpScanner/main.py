@@ -1,9 +1,11 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QFileDialog, QVBoxLayout, QHBoxLayout, QWidget, QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout, \
+    QWidget, QLineEdit
 from scanner.left_to_right_scanner import LeftToRightScanner
 from scanner.right_to_left_scanner import RightToLeftScanner
 from scanner.top_to_bottom_scanner import TopToBottomScanner
 from scanner.bottom_to_top_scanner import BottomToTopScanner
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -56,7 +58,7 @@ class MainWindow(QMainWindow):
             output_path = self.selected_file_path.replace('.mp4', '_converted.avi')
 
             direction = 'left'  # 예시로 방향을 지정, 실제로는 UI에서 받아야 함
-            line_speed = 1       # 예시로 속도를 지정, 실제로는 UI에서 받아야 함
+            line_speed = 1  # 예시로 속도를 지정, 실제로는 UI에서 받아야 함
 
             if direction == 'left':
                 scanner = LeftToRightScanner(self.selected_file_path, line_speed)
@@ -84,6 +86,7 @@ class MainWindow(QMainWindow):
                 self.path_edit.setText(f"File saved to: {save_path}")
         else:
             self.path_edit.setText("No converted data to save.")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
