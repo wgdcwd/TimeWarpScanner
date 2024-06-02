@@ -46,5 +46,11 @@ class BaseScanner:
     def update_line_position(self, key, width, height):
         pass
 
+    def update_speed(self, key):
+        if key == ord('p'):
+            self.line_speed = min(self.line_speed + 1, 10)
+        elif key == ord('o'):
+            self.line_speed = max(self.line_speed - 1, 1)
+
     def get_output_data(self):
         return self.output_data

@@ -35,6 +35,8 @@ class BottomToTopScanner(BaseScanner):
             elif self.paused:
                 self.update_line_position(key, width, height)
 
+            self.update_speed(key)
+
             if self.line_pos <= 0:
                 break
 
