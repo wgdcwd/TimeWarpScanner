@@ -61,13 +61,13 @@ Time Warp Scanner는 사용자가 영상에 독특한 효과를 적용할 수 �
 ## 예시 영상
 - Left to Right
 
-https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/66fcc741-96a1-4368-b81f-27b279d17dc1
+[https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/66fcc741-96a1-4368-b81f-27b279d17dc1](https://youtu.be/olNONMkl91A)
 
 
 
 - Left to Right 선 위치 조절
   
-https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/0113c739-17b5-4890-9078-b650885001fe
+[https://github.com/wgdcwd/TimeWarpScanner/assets/76992124/0113c739-17b5-4890-9078-b650885001fe](https://youtu.be/m54RzlNDuCg)
 
 
 
