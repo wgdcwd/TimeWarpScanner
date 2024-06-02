@@ -124,6 +124,11 @@ class MainWindow(QMainWindow):
         self.save_file_button.setEnabled(False)
         main_layout.addWidget(self.save_file_button)
 
+        # 종료 버튼
+        self.exit_button = QPushButton("Exit")
+        self.exit_button.clicked.connect(self.close_application)
+        main_layout.addWidget(self.exit_button)
+
         container = QWidget()
         container.setLayout(main_layout)
         self.setCentralWidget(container)
@@ -201,6 +206,7 @@ class MainWindow(QMainWindow):
 
     def save_file(self):
         if self.converted_data:
+            self.exit_button.setEnabled(False)
             save_path = self.save_path_edit.text()
             file_name = self.save_name_edit.text()
             extension = self.get_selected_extension()
@@ -212,8 +218,12 @@ class MainWindow(QMainWindow):
                 self.path_edit.setText(f"File saved to: {full_save_path}")
             else:
                 self.path_edit.setText("Save path, file name, or extension is missing.")
+            self.exit_button.setEnabled(True)
         else:
             self.path_edit.setText("No converted data to save.")
+
+    def close_application(self):
+        self.close()
 
 
 if __name__ == "__main__":
