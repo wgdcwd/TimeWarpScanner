@@ -70,7 +70,9 @@ class MainWindow(QMainWindow):
         # 파일 이름 입력 및 경로 선택 레이아웃
         save_layout = QFormLayout()
         self.save_name_edit = QLineEdit()
+        self.save_name_edit.textChanged.connect(self.update_save_button_state)
         self.save_path_edit = QLineEdit()
+        self.save_path_edit.textChanged.connect(self.update_save_button_state)
 
         save_browse_button = QPushButton("Browse...")
         save_browse_button.clicked.connect(self.browse_save_path)
@@ -100,9 +102,11 @@ class MainWindow(QMainWindow):
 
         self.custom_extension_edit = QLineEdit()
         self.custom_extension_edit.setEnabled(False)
+        self.custom_extension_edit.textChanged.connect(self.update_save_button_state)
 
         def toggle_custom_extension():
             self.custom_extension_edit.setEnabled(self.radio_custom.isChecked())
+            self.update_save_button_state()
 
         self.radio_custom.toggled.connect(toggle_custom_extension)
 
@@ -115,9 +119,10 @@ class MainWindow(QMainWindow):
         main_layout.addLayout(extension_layout)
 
         # 저장 버튼
-        save_file_button = QPushButton("Save File")
-        save_file_button.clicked.connect(self.save_file)
-        main_layout.addWidget(save_file_button)
+        self.save_file_button = QPushButton("Save File")
+        self.save_file_button.clicked.connect(self.save_file)
+        self.save_file_button.setEnabled(False)
+        main_layout.addWidget(self.save_file_button)
 
         container = QWidget()
         container.setLayout(main_layout)
@@ -138,6 +143,7 @@ class MainWindow(QMainWindow):
         directory = QFileDialog.getExistingDirectory(self, "Select Directory", options=options)
         if directory:
             self.save_path_edit.setText(directory)
+            self.update_save_button_state()
 
     def convert_file(self):
         if self.selected_file_path:
@@ -159,6 +165,7 @@ class MainWindow(QMainWindow):
             scanner.convert(output_path)
             self.converted_data = output_path
             self.path_edit.setText("File converted. Ready to save.")
+            self.update_save_button_state()
         else:
             self.path_edit.setText("No file selected for conversion.")
 
@@ -183,6 +190,14 @@ class MainWindow(QMainWindow):
             return self.custom_extension_edit.text()
         else:
             return None
+
+    def update_save_button_state(self):
+        if self.converted_data and self.save_path_edit.text() and self.save_name_edit.text() and (
+                self.radio_mp4.isChecked() or self.radio_avi.isChecked() or (
+                self.radio_custom.isChecked() and self.custom_extension_edit.text())):
+            self.save_file_button.setEnabled(True)
+        else:
+            self.save_file_button.setEnabled(False)
 
     def save_file(self):
         if self.converted_data:
