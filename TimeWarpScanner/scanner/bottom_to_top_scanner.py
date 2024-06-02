@@ -24,7 +24,6 @@ class BottomToTopScanner(BaseScanner):
             frame_with_line = combined_frame.copy()
             cv2.line(frame_with_line, (0, self.line_pos), (width, self.line_pos), (255, 0, 0), 2)
 
-            out.write(frame_with_line)
             cv2.imshow('Time Warp Scan', frame_with_line)
 
             key = cv2.waitKey(int(1000 / fps)) & 0xFF
@@ -32,16 +31,16 @@ class BottomToTopScanner(BaseScanner):
                 break
             elif key == ord(' '):  # Spacebar
                 self.paused = not self.paused
-            elif self.paused:
-                self.update_line_position(key, width, height)
 
+            if not self.paused:
+                out.write(frame_with_line)
+                frame_index += 1
+
+            self.update_line_position(key, width, height)
             self.update_speed(key)
 
             if self.line_pos <= 0:
                 break
-
-            if not self.paused:
-                frame_index += 1
 
     def update_line_position(self, key, width, height):
         if key == ord('w'):  # 'w' key
